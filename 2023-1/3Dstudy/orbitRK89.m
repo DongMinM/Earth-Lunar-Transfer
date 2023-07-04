@@ -2,7 +2,7 @@ function [Trans_orb,Lunar_orb,min_distance] = orbitRK89(y0,IConditions,Lunar_pos
 
     mu_earth                    =   IConditions.Earth.mu;
     mu_lunar                    =   IConditions.Lunar.mu;
-    lunar_SOI                   =   IConditions.Lunar.SOI;
+    %lunar_SOI                   =   IConditions.Lunar.SOI;
     dt                          =   IConditions.dt_rk89;
     lunar_w                     =   IConditions.Lunar.w;
     h_mission                   =   IConditions.Lunar.h_mission;

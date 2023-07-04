@@ -17,36 +17,19 @@ Rmission        =   100;
 
 
 % Initial Plane
-<<<<<<< HEAD:3Dstudy/main.m
-<<<<<<< HEAD
-<<<<<<< HEAD
 raan                 =   pi/2.56;
-inc                  =   4 * pi / 180;
-=======
-raan                 =   70 * pi / 180;
-inc                  =   30 * pi / 180;
->>>>>>> main
+inc                  =   70 * pi / 180;
 w                    =   180 * pi / 180;
-=======
-raan                 =   51 * pi / 180;
-inc                  =   25 * pi / 180;
-=======
-raan                 =   67 * pi / 180;
-inc                  =   20 * pi / 180;
->>>>>>> main:2023-1/3Dstudy/main.m
-f                    =   180 * pi / 180;
->>>>>>> main
-
+addtheta             =   0.01 * pi / 180;
 
 % Condition Struct
 Earth_conditions = struct("mu",   mu_earth, ...
                           "h0",   altitude+R_earth, ...
                           "raan", raan, ...
                           "inc",  inc, ...
-                          "f",    f, ...
-                          "vInitpq",[0 , 10.7 , 0 ]');
-
-% vInitpq must be in the  10.63 ~ 10.7 for root finding
+                          "w",    w, ...
+                          'addtheta',   addtheta, ...
+                          "vInitpq",[0 , 10.671211547851572 , 0 ]');
 
 
 Lunar_conditions = struct("mu",       mu_lunar, ...
@@ -60,17 +43,21 @@ Lunar_conditions = struct("mu",       mu_lunar, ...
 IConditions       = struct("Earth",Earth_conditions, ...
                            "Lunar",Lunar_conditions, ...
                            "dt_rk89",   60, ...
-                           "dt_rk4",1, ...
-                           "result",'t');
+                           "dt_rk4",5);
 
 
-% solve Transfer & LOI orbit
+% % solve Transfer & LOI orbit
+% lunar_posInit                                =   [ 388000 , 0 , 0 ]';
+% [trans_orb , Lunar_orb_trans , IConditions]  =   transfer( IConditions , lunar_posInit );
+% 
+% 
+% % Mission Orb maneuver
+% [mission_orb , Lunar_orb_mission]            =   maneuver(trans_orb.orb(:,end) , Lunar_orb_trans.orb(:,end) , IConditions);
+
+
+
 lunar_posInit                                =   [ 388000 , 0 , 0 ]';
-[trans_orb , Lunar_orb_trans , IConditions]  =   transfer( IConditions , lunar_posInit );
-
-
-% Mission Orb maneuver
-[mission_orb , Lunar_orb_mission]            =   maneuver(trans_orb.orb(:,end) , Lunar_orb_trans.orb(:,end) , IConditions);
+[trans_orb , Lunar_orb_trans , IConditions, mission_orb , Lunar_orb_mission] = fitorb(IConditions , lunar_posInit);
 
 
 % Results
@@ -83,9 +70,6 @@ results.totalOrb      = [trans_orb.orb, mission_orb.orb];
 
 results.transferOev   = trans_orb.oev;
 results.missionOev    = mission_orb.oev;
-T_mission = 2*pi*sqrt(mission_orb.oev(1)^3/mu_lunar);
-% results.missionOev1Cycle = mission_orb.orb(:,1:round(T_mission/IConditions.dt_rk4))-Lunar_orb_mission.orb(:,1:round(T_mission/IConditions.dt_rk4));
-
 
 results.earth_gravity = mission_orb.earth_gravity;
 results.lunar_gravity = mission_orb.lunar_gravity;
@@ -100,4 +84,3 @@ results.totalLunarOrb      = [Lunar_orb_trans.orb , Lunar_orb_mission.orb];
 
 
 viewer(results,0);
-% saver(results,1);
