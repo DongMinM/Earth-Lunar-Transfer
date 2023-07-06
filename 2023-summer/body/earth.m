@@ -2,7 +2,7 @@ function Earth = earth()
 
 Earth = {};
 
-Earth.mu        = 398600; % km^3/s^2
+Earth.Mass      = 5.9742*10^24; % kg
 Earth.Radius    = 6378.1; % km
 
 end

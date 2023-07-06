@@ -1,4 +1,5 @@
-clear
+function jc3d = jacobian_constant_3d(JC)
+
 m_e = 5.9742*10^24;
 m_l = 7.36*10^22;
 mu = m_l / (m_e+m_l);
@@ -10,24 +11,19 @@ p = (x.^2+y.^2) + 2*(1-mu)./sqrt((x+mu).^2+y.^2+z.^2) + 2 * mu ./sqrt((x-1+mu).^
 JC = 3.19;
 
 
-figure
-view(3)
-for i = 1:length(JC)
+jc3d = figure("Visible","off");
 
-    s = isosurface(x,y,z,p,JC(i));
-    pat = patch(s);
-    pat.FaceColor = [0.4,0.4,0.4];
-    pat.FaceAlpha = 0.8;
-    pat.EdgeColor = 'none';
+s = isosurface(x,y,z,p,JC);
+pat = patch(s);
+pat.FaceColor = [0.4,0.4,0.4];
+pat.FaceAlpha = 0.8;
+pat.EdgeColor = 'none';
 
-    hold on
-    plot(-mu,0,'Marker','.','MarkerSize',40,'Visible','off')
-    plot(1-mu,0,'Marker','.','MarkerSize',10,'Visible','off')
-    hold off
+hold on
+plot(-mu,0,'Marker','.','MarkerSize',40,'Visible','off')
+plot(1-mu,0,'Marker','.','MarkerSize',10,'Visible','off')
+hold off
 
-    title("Jacobi Constant = "+num2str(JC(i)))
-    legend(pat,'Zero Velocity Curve (ZVC)',Location='best')
-    grid on
-    drawnow
-    
-end
+title("Jacobi Constant = "+num2str(JC))
+legend(pat,'Zero Velocity Curve (ZVC)',Location='best')
+grid on
