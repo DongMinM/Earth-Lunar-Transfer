@@ -7,7 +7,7 @@ mu = m_l / (m_e+m_l);
 [x,y,z] = meshgrid(linspace(-1.5,1.5,70));
 p = (x.^2+y.^2) + 2*(1-mu)./sqrt((x+mu).^2+y.^2+z.^2) + 2 * mu ./sqrt((x-1+mu).^2+y.^2);
 % JC = linspace(2.98,3.1,10);
-JC = 3.19;
+JC = 3.18;
 
 
 figure

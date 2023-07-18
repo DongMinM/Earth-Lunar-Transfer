@@ -4,12 +4,12 @@ m_l = 7.36*10^22;
 mu = m_l / (m_e+m_l);
 
 
-[x,y] = meshgrid(linspace(-10,10,200));
+[x,y] = meshgrid(linspace(-1.5,1.5,200));
 
 z = (x.^2+y.^2) + 2*(1-mu)./sqrt((x+mu).^2+y.^2) + 2 * mu ./sqrt((x-1+mu).^2+y.^2);
 
 JC = linspace(2.98,3.3,100);
-JC = 3;
+JC = 3.18;
 
 figure
 for i = 1:length(JC)

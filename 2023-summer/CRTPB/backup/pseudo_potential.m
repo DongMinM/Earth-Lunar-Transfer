@@ -21,6 +21,3 @@ hold off
 legend(Location="best")
 title("Pseudo-Potential Field")
 zlim([-4,0])
-
-
-
