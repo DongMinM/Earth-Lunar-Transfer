@@ -28,6 +28,10 @@ for i = 1:length(JC)
     title("Jacobi Constant = "+num2str(JC(i)))
     legend(pat,'Zero Velocity Curve (ZVC)',Location='best')
     grid on
+
+    xlabel("LD")
+    ylabel("LD")
+    zlabel("LD")
     drawnow
     
 end

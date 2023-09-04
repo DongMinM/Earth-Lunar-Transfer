@@ -18,6 +18,9 @@ hold on
 plot3(-mu,0,-1.5,'Marker','.','MarkerSize',60,'DisplayName','Earth')
 plot3(1-mu,0,-1.5,'Marker','.','MarkerSize',30,'DisplayName','Lunar')
 hold off
+xlabel("LD")
+ylabel("LD")
+zlabel("LD")
 legend(Location="best")
 title("Pseudo-Potential Field")
 zlim([-4,0])

@@ -8,8 +8,8 @@ mu = m_l / (m_e+m_l);
 
 z = (x.^2+y.^2) + 2*(1-mu)./sqrt((x+mu).^2+y.^2) + 2 * mu ./sqrt((x-1+mu).^2+y.^2);
 
-JC = linspace(2.98,3.3,100);
-JC = 3.18;
+JC = linspace(2.98,3.15,70);
+% JC = 3.18;
 
 figure
 for i = 1:length(JC)
@@ -20,6 +20,20 @@ for i = 1:length(JC)
     hold off
     title("Jacobi Constant = "+num2str(JC(i)))
     grid on
-    legend(Location="best")
+    legend()
+
+    xlabel("LD")
+    ylabel("LD")
+    zlabel("LD")
+
     drawnow  
+    frame = getframe(1);
+    im = frame2im(frame);
+    [imind,cm] = rgb2ind(im,256);
+    if i==1
+        imwrite(imind,cm,'jc.gif','gif','Loopcount',inf);
+    else
+        imwrite(imind,cm,'jc.gif','gif','DelayTime',0.05,'WriteMode','append');
+    end
+
 end

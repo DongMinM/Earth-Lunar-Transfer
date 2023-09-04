@@ -23,7 +23,8 @@ step = step/tau_;
 
 % solve
 [orb,JC,orb_ECI,orb_centerECI,orb_otherECI] = rk89(@rframe_derived,step,stop,mu,r1,r2,r3,v3);
-
+(orb(1:3,end)-r1)*l_
+(orb(4:6,end) + cross([0,0,1],r1)')/tau_*l_
 
 end
 

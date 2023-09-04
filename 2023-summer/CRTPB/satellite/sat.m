@@ -19,13 +19,13 @@ min     = 10;
 sec     = 0;
 sat.UTCdate = [year,mon,day,hour,min,sec];
 
-theta = 70*pi/180;
+theta = 100*pi/180;
 
-r = 6874;
-v = 10.62;
-
+% r = 9274;
+% v = 9.0651;
+% 
 % sat.Ipos = [r*cos(theta),-r*sin(theta),0]';
-% sat.Ivel = [v*sin(theta),v*cos(theta),0]';
+% sat.Ivel = [v*sin(theta),-v*cos(theta),0]';
 
 
 sat.Ipos =    1.0e+05 *[0.435218492675022,...

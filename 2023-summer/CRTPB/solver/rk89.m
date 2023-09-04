@@ -9,7 +9,6 @@ JC = zeros(6,stop);
 orb_centerECI(:,1) = [-mu,0,0]';
 orb_otherECI(:,1) = [1-mu,0,0]';
 JC(:,1) = getJC(mu,[r3;v]);
-
 for i=2:stop
     %% Non-dimensional dynamics
     rv = orb(:,i-1);
@@ -38,6 +37,8 @@ for i=2:stop
     orb_ECI(:,i)    = DCM*rv(1:3);
     orb_centerECI(:,i) = DCM*[-mu,0,0]';
     orb_otherECI(:,i)  = DCM*[1-mu,0,0]';
+    
+    
 
 end
 

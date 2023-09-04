@@ -11,7 +11,7 @@ addpath("body\","satellite\","energy\","utility\","solver\")
 
 % simulation time
 step = 100;
-stop = 70*3600*24;
+stop = 100*3600*24;
 
 % set Bodies
 centerBody = earth();
@@ -26,8 +26,8 @@ sat        = sat();
 
 
 figure;
-for i = 1:10
-    sat.Ivel = sat.Ivel*1.002;
+for i = 1
+    sat.Ivel = sat.Ivel*1.003;
     norm(sat.Ivel)
     [mu,out,eci,earth,lunar,JC] = CRTBP(centerBody,secondBody,sat,step,stop);
 

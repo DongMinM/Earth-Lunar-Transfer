@@ -17,25 +17,10 @@ Rmission        =   100;
 
 
 % Initial Plane
-<<<<<<< HEAD:3Dstudy/main.m
-<<<<<<< HEAD
-<<<<<<< HEAD
-raan                 =   pi/2.56;
-inc                  =   4 * pi / 180;
-=======
-raan                 =   70 * pi / 180;
-inc                  =   30 * pi / 180;
->>>>>>> main
-w                    =   180 * pi / 180;
-=======
-raan                 =   51 * pi / 180;
-inc                  =   25 * pi / 180;
-=======
+
 raan                 =   67 * pi / 180;
-inc                  =   20 * pi / 180;
->>>>>>> main:2023-1/3Dstudy/main.m
+inc                  =   85 * pi / 180;
 f                    =   180 * pi / 180;
->>>>>>> main
 
 
 % Condition Struct
@@ -44,7 +29,7 @@ Earth_conditions = struct("mu",   mu_earth, ...
                           "raan", raan, ...
                           "inc",  inc, ...
                           "f",    f, ...
-                          "vInitpq",[0 , 10.7 , 0 ]');
+                          "vInitpq",[0 , -10.7 , 0 ]');
 
 % vInitpq must be in the  10.63 ~ 10.7 for root finding
 
@@ -59,8 +44,8 @@ Lunar_conditions = struct("mu",       mu_lunar, ...
 
 IConditions       = struct("Earth",Earth_conditions, ...
                            "Lunar",Lunar_conditions, ...
-                           "dt_rk89",   60, ...
-                           "dt_rk4",1, ...
+                           "dt_rk89",   5, ...
+                           "dt_rk4",5, ...
                            "result",'t');
 
 

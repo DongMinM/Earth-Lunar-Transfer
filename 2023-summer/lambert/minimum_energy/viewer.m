@@ -15,7 +15,7 @@ quiver3(ri(1),ri(2),ri(3),v(1),v(2),v(3),100)
 plot3(orb(1,:),orb(2,:),orb(3,:),'--')
 hold off
 
-
-% xlim([-1,1]*1e4)
-% ylim([-1,1]*1e4)
-% zlim([-1,1]*1e4)
+grid on
+xlim([-1,1]*1e4)
+ylim([-1,1]*1e4)
+zlim([-1,1]*1e4)
